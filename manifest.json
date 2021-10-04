@@ -17,19 +17,19 @@
       ],
       "SupportedInMultiActions": false,
       "Tooltip": "Simple on-off toggle",
-      "UUID": "com.elgato.rj.on-off.action"
+      "UUID": "com.elgato.okfineigitit.on-off.action"
     }
   ],
   "SDKVersion": 2,
-  "Author": "Rehann John",
-  "CodePath": "plugin/dist/com.rehannj.python-plugin/com.rehannj.python-plugin.exe",
+  "Author": "okfineIGitIt",
+  "CodePath": "plugin/dist/com.basic-python-plugin/com.basic-python-plugin.exe",
   "PropertyInspectorPath": "propertyInspector.html",
   "Description": "Simple on-off toggle",
   "Name": "on-off",
   "Icon": "plugin/images/off",
-  "Category": "RJ Test Plugins",
+  "Category": "Test Plugins",
   "CatagoryIcon": "",
-  "URL": "",
+  "URL": "https://github.com/okfineIGitIt/com.streamdeck-basic-python-plugin.sdPlugin",
   "Version": "0.0.0",
   "OS": [
     {
