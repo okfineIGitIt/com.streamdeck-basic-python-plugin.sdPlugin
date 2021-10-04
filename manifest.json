@@ -1,0 +1,44 @@
+{
+  "Actions": [
+    {
+      "Icon": "plugin/images/off",
+      "Name": "On/Off in Python",
+      "States": [
+        {
+          "Image": "plugin/images/off",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        },
+        {
+          "Image": "plugin/images/on",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Simple on-off toggle",
+      "UUID": "com.elgato.rj.on-off.action"
+    }
+  ],
+  "SDKVersion": 2,
+  "Author": "Rehann John",
+  "CodePath": "plugin/dist/com.rehannj.python-plugin/com.rehannj.python-plugin.exe",
+  "PropertyInspectorPath": "propertyInspector.html",
+  "Description": "Simple on-off toggle",
+  "Name": "on-off",
+  "Icon": "plugin/images/off",
+  "Category": "RJ Test Plugins",
+  "CatagoryIcon": "",
+  "URL": "",
+  "Version": "0.0.0",
+  "OS": [
+    {
+        "Platform": "windows",
+        "MinimumVersion" : "10"
+    }
+  ],
+  "Software":
+    {
+        "MinimumVersion" : "4.1"
+    }
+}
