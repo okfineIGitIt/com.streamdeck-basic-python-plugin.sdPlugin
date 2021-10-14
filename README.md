@@ -1,17 +1,14 @@
-> Note: There are ways to tweak this configuration if you know what you are doing. This instructions are intended
+> Note: There are ways to tweak this configuration, feel free to change things! This instructions are intended
 to be the most direct path to get python up and running on your machine.
 
 # Prerequisites
 
-1. Elgato Stream Deck (tested with Elgato Stream Deck V1, but should work with any model).
-2. Stream Deck Software (https://www.elgato.com/en/downloads).
-3. Stream Deck DistributionTool (https://developer.elgato.com/documentation/stream-deck/sdk/exporting-your-plugin/).
-4. Windows 10 system (have not needed to distribute on Linux/Mac yet).
-5. Python (https://realpython.com/installing-python/#how-to-install-from-the-full-installer).
+1. **Elgato Stream Deck** (tested with Elgato Stream Deck V1, but should work with any model).
+2. **Stream Deck Software** (https://www.elgato.com/en/downloads).
+3. **Windows 10** system (have not needed to distribute on Linux/Mac yet).
+4. **python-3.8 or higher** (https://realpython.com/installing-python/#how-to-install-from-the-full-installer).
 
-    You will need to have at least python-3.8 installed on your system.
-
-    **Make sure that python is in your system path.**
+    **Make sure that the `python` executable is in your system path.**
 
 # Environment Setup
 
