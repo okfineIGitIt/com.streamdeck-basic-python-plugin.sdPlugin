@@ -8,7 +8,7 @@ to be the most direct path to get python up and running on your machine.
 3. **Windows 10** system (have not needed to distribute on Linux/Mac yet).
 4. **`python-3.8` or higher** (https://realpython.com/installing-python/#how-to-install-from-the-full-installer).
 
-    **Make sure that the `python` executable is in your system path.**
+    **Make sure that the `python` executable is in your system path (https://docs.python.org/3/using/windows.html#setting-envvars)**
 
 # Environment Setup
 
