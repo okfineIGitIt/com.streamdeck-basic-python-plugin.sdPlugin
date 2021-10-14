@@ -1,5 +1,5 @@
 > Note: There are ways to tweak this configuration, feel free to change things! These instructions are intended
-to be the most direct path to get python up and running on your machine.
+to be the most direct path to get a working Stream Deck Python plugin up and running on your machine.
 
 # Prerequisites
 
