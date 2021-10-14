@@ -15,22 +15,22 @@ to be the most direct path to get python up and running on your machine.
 Open a command line in the project folder.
 Create a virtual environment with the following command:
 ```bash
-~/com.streamdeck-basic-python-plugin.sdPlugin/> python -m venv .venv
+.../streamdeck_python_plugin/> python -m venv .venv
 ```
 
 Activate this new virtual environment:
 ```bash
-~/com.streamdeck-basic-python-plugin.sdPlugin/> .venv\Scripts\activate.bat
+.../streamdeck_python_plugin/> .venv\Scripts\activate.bat
 ```
 
 Make sure `pip` is up-to-date:
 ```bash
-~/com.streamdeck-basic-python-plugin.sdPlugin/> python -m pip install --upgrade pip
+.../streamdeck_python_plugin/> python -m pip install --upgrade pip
 ```
 
 Install packages from requirements.txt file:
 ```bash
-~/com.streamdeck-basic-python-plugin.sdPlugin/> pip install -r requirements.txt
+.../streamdeck_python_plugin/> pip install -r requirements.txt
 ```
 
 # Creating a Stream Deck Plugin
@@ -67,9 +67,9 @@ Based on the `data` from the app, different actions can be programmed.
 
 ## 2. Create an executable from the python code.
 
-To create the executable `pyinstaller` will be used. Run the following command to create the executable:
+To create the executable `pyinstaller` will be used. Navigate to the `plugin` folder and run the following command to create the executable:
 ```bash
-~/com.streamdeck-basic-python-plugin.sdPlugin/> pyinstaller plugin/com.basic-python-plugin.py
+.../streamdeck_python_plugin/streamcom.streamdeck-basic-python-plugin.sdPlugin/plugin> pyinstaller com.basic-python-plugin.py
 ```
 
 This will create a `dist` and `build` folder in the `plugin` folder.
@@ -95,21 +95,21 @@ Finally, to install the plugin in the Stream Deck app, Elgato has provided a dis
 **For example, if the plugin folder was C:/Desktop/com.streamdeck-basic-python-plugin.sdPlugin, then the shell would need to be running from C:/Desktop.**
 
 
-Run this command from the command line:
+Run this command from the command line in the project folder:
 ```bash
-~/> tools/DistributionTool.exe -b -i com.streamdeck-basic-python-plugin.sdPlugin -o release
+.../streamdeck_python_plugin/> tools/DistributionTool.exe -b -i com.streamdeck-python-plugin.sdPlugin -o release
 ```
 
-`com.streamdeck-basic-python-plugin.sdPlugin` is the *plugin folder* (**not** the python executable), and the value after `-o` is where to put the distribution file.
+`com.streamdeck-python-plugin.sdPlugin` is the *plugin folder* (**not** the python executable), and the value after `-o` is where to put the distribution file.
 
-In the above case , you should find a `com.streamdeck-basic-python-plugin.streamDeckPlugin` file in `com.streamdeck-basic-python-plugin.sdPlugin/release`.
+In the above case , you should find a `com.streamdeck-python-plugin.streamDeckPlugin` file in `com.streamdeck-python-plugin.sdPlugin/release`.
 
-Double clicking `com.streamdeck-basic-python-plugin.streamDeckPlugin` will install your plugin.
+Double clicking `com.streamdeck-python-plugin.streamDeckPlugin` will install your plugin.
 
 
 ### Development
 During development, if you make changes to the plugin code and rebuild it, you will need to uninstall the old plugin first before installing the updated plugin in the Stream Deck App.
-MAKE SURE YOU ARE **NOT** ACCESSING THE APP PLUGIN FOLDER WHEN DOING THIS (`C:\Users\\(user)\AppData\Roaming\Elgato\StreamDeck\Plugins\\(plugin-name)` for Windows). The uninstall will not complete properly if so and you may have to restart your system, close the Stream Deck app, and delete the plugin folder manually from the App Plugin folder as an administrator.
+MAKE SURE YOU ARE **NOT** ACCESSING THE APP PLUGIN FOLDER WHEN YOU DOUBLE CLICK/RUN `com.streamdeck-python-plugin.streamDeckPlugin` (`C:\Users\\(user)\AppData\Roaming\Elgato\StreamDeck\Plugins\\(plugin-name)` for Windows). The uninstall will not complete properly if so and you may have to restart your system, close the Stream Deck app, and delete the plugin folder manually from the App Plugin folder as an administrator.
 
 ![Uninstall Streamdeck Plugin](/docs/assets/uninstalling_streamdeck_plugin.png)
 

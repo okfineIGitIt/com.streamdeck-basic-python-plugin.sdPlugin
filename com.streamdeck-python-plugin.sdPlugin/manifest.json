@@ -1,0 +1,44 @@
+{
+  "Actions": [
+    {
+      "Icon": "plugin/images/off",
+      "Name": "On/Off in Python",
+      "States": [
+        {
+          "Image": "plugin/images/off",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        },
+        {
+          "Image": "plugin/images/on",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Simple on-off toggle",
+      "UUID": "com.elgato.okfineigitit.on-off.action"
+    }
+  ],
+  "SDKVersion": 2,
+  "Author": "okfineIGitIt",
+  "CodePath": "plugin/dist/com.basic-python-plugin/com.basic-python-plugin.exe",
+  "PropertyInspectorPath": "propertyInspector.html",
+  "Description": "Simple on-off toggle",
+  "Name": "on-off",
+  "Icon": "plugin/images/off",
+  "Category": "Test Plugins",
+  "CatagoryIcon": "",
+  "URL": "https://github.com/okfineIGitIt/com.streamdeck-basic-python-plugin.sdPlugin",
+  "Version": "0.0.0",
+  "OS": [
+    {
+        "Platform": "windows",
+        "MinimumVersion" : "10"
+    }
+  ],
+  "Software":
+    {
+        "MinimumVersion" : "4.1"
+    }
+}
