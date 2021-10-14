@@ -108,6 +108,8 @@ In the above case , you should find a `com.streamdeck-basic-python-plugin.stream
 
 Double clicking `com.streamdeck-basic-python-plugin.streamDeckPlugin` will install your plugin.
 
+
+### Development
 During development, if you make changes to the plugin code and rebuild it, you will need to uninstall the old plugin first before installing the updated plugin in the Stream Deck App.
 MAKE SURE YOU ARE **NOT** ACCESSING THE APP PLUGIN FOLDER WHEN DOING THIS (`C:\Users\\(user)\AppData\Roaming\Elgato\StreamDeck\Plugins\\(plugin-name)` for Windows). The uninstall will not complete properly if so and you may have to restart your system, close the Stream Deck app, and delete the plugin folder manually from the App Plugin folder as an administrator.
 
