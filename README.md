@@ -118,6 +118,8 @@ MAKE SURE YOU ARE **NOT** ACCESSING THE APP PLUGIN FOLDER WHEN YOU DOUBLE CLICK/
 
 ## `WARNING: lib not found: api-ms-win-core-path-l1-1-0.dll dependency of ...\python\python39\python39.dll`
 
+Context: occurs sometimes when running `pyinstaller` (will be in the command line output, and the executable will not run).
+
 Solutions:
 - Uninstall and re-install python
 
