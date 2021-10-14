@@ -122,6 +122,9 @@ pythonenv*
 .spyderproject
 .spyproject
 
+# VS Code project settings
+.vscode
+
 # Rope project settings
 .ropeproject
 
