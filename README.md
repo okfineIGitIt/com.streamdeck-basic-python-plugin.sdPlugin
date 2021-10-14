@@ -6,7 +6,7 @@ to be the most direct path to get python up and running on your machine.
 1. **Elgato Stream Deck** (tested with Elgato Stream Deck V1, but should work with any model).
 2. **Stream Deck Software** (https://www.elgato.com/en/downloads).
 3. **Windows 10** system (have not needed to distribute on Linux/Mac yet).
-4. **python-3.8 or higher** (https://realpython.com/installing-python/#how-to-install-from-the-full-installer).
+4. **`python-3.8` or higher** (https://realpython.com/installing-python/#how-to-install-from-the-full-installer).
 
     **Make sure that the `python` executable is in your system path.**
 
