@@ -1,7 +1,7 @@
 > Note: There are ways to tweak this configuration if you know what you are doing. This instructions are intended
 to be the most direct path to get python up and running on your machine.
 
-# Pre-requisites
+# Prerequisites
 
 1. Elgato Stream Deck (tested with Elgato Stream Deck V1, but should work with any model).
 2. Stream Deck Software (https://www.elgato.com/en/downloads).
@@ -93,8 +93,8 @@ Reference: https://developer.elgato.com/documentation/stream-deck/sdk/exporting-
 
 Finally, to install the plugin in the Stream Deck app, Elgato has provided a distribution tool for both Mac and Windows.
 
->**For the next step, open a shell in the parent directory of the plugin folder.**
->**For example, if the plugin folder was C:/Desktop/com.streamdeck-basic-python-plugin.sdPlugin, then the shell would need to be running from C:/Desktop.**
+**For the next step, open a shell in the parent directory of the plugin folder.**
+**For example, if the plugin folder was C:/Desktop/com.streamdeck-basic-python-plugin.sdPlugin, then the shell would need to be running from C:/Desktop.**
 
 
 Run this command from the command line:
@@ -108,8 +108,8 @@ In the above case , you should find a `com.streamdeck-basic-python-plugin.stream
 
 Double clicking `com.streamdeck-basic-python-plugin.streamDeckPlugin` will install your plugin.
 
-> Note: during development, if you make changes to the plugin code and rebuild it, you will need to uninstall the old plugin first before installing the updated plugin.
-> MAKE SURE YOU ARE **NOT** ACCESSING THE APP PLUGIN FOLDER WHEN DOING THIS (`C:\Users\\(user)\AppData\Roaming\Elgato\StreamDeck\Plugins\\(plugin-name)` for Windows). The uninstall will not complete properly if so and you may have to restart your system, close the Stream Deck app, and delete the plugin folder manually from the App Plugin folder as an administrator.
+During development, if you make changes to the plugin code and rebuild it, you will need to uninstall the old plugin first before installing the updated plugin in the Stream Deck App.
+MAKE SURE YOU ARE **NOT** ACCESSING THE APP PLUGIN FOLDER WHEN DOING THIS (`C:\Users\\(user)\AppData\Roaming\Elgato\StreamDeck\Plugins\\(plugin-name)` for Windows). The uninstall will not complete properly if so and you may have to restart your system, close the Stream Deck app, and delete the plugin folder manually from the App Plugin folder as an administrator.
 
 ![Uninstall Streamdeck Plugin](/docs/assets/uninstalling_streamdeck_plugin.png)
 
