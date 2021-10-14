@@ -43,6 +43,7 @@ Creating a Stream Deck python plugin consists of 4 steps.
 
 The `Plugin().process_data()` function is where actions can be performed based on updates from the Stream Deck app:
 ```python
+...
 def process_data(self, data):
     """Process data and perform actions.
 
@@ -96,12 +97,12 @@ Finally, to install the plugin in the Stream Deck app, Elgato has provided a dis
 
 Run this command from the command line:
 ```bash
-~/> tools/DistributionTool.exe -b -i com.streamdeck-basic-python-plugin.sdPlugin -o Release
+~/> tools/DistributionTool.exe -b -i com.streamdeck-basic-python-plugin.sdPlugin -o release
 ```
 
 `com.streamdeck-basic-python-plugin.sdPlugin` is the *plugin folder* (**not** the python executable), and the value after `-o` is where to put the distribution file.
 
-In the above case , you should find a `com.streamdeck-basic-python-plugin.streamDeckPlugin` file in `com.streamdeck-basic-python-plugin.sdPlugin/Release`.
+In the above case , you should find a `com.streamdeck-basic-python-plugin.streamDeckPlugin` file in `com.streamdeck-basic-python-plugin.sdPlugin/release`.
 
 Double clicking `com.streamdeck-basic-python-plugin.streamDeckPlugin` will install your plugin.
 
