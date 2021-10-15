@@ -69,7 +69,7 @@ Based on the `data` from the app, different actions can be programmed.
 
 To create the executable `pyinstaller` will be used. Navigate to the `plugin` folder and run the following command to create the executable:
 ```bash
-.../streamdeck_python_plugin/streamcom.streamdeck-basic-python-plugin.sdPlugin/plugin> pyinstaller com.basic-python-plugin.py
+.../streamdeck_python_plugin/streamcom.streamdeck-python-plugin.sdPlugin/plugin> pyinstaller com.basic-python-plugin.py
 ```
 
 This will create a `dist` and `build` folder in the `plugin` folder.
@@ -82,7 +82,7 @@ This will create a `dist` and `build` folder in the `plugin` folder.
 
 If no modifications are made to the image filenames and the executable path doesn't change, the `manifest.json` can be left as is.
 
-Otherwise, this documentation from Elgato is a good reference for how to set up the json:
+Otherwise, use this documentation from Elgato as  reference:
 https://developer.elgato.com/documentation/stream-deck/sdk/manifest/
 
 ## 4. Package the plugin using the package distribution tool provided by Elgato.
@@ -91,20 +91,16 @@ Reference: https://developer.elgato.com/documentation/stream-deck/sdk/exporting-
 
 Finally, to install the plugin in the Stream Deck app, Elgato has provided a distribution tool for both Mac and Windows.
 
-**For the next step, open a shell in the parent directory of the plugin folder.**
-**For example, if the plugin folder was C:/Desktop/com.streamdeck-basic-python-plugin.sdPlugin, then the shell would need to be running from C:/Desktop.**
-
-
 Run this command from the command line in the project folder:
 ```bash
 .../streamdeck_python_plugin/> tools/DistributionTool.exe -b -i com.streamdeck-python-plugin.sdPlugin -o release
 ```
 
-`com.streamdeck-python-plugin.sdPlugin` is the *plugin folder* (**not** the python executable), and the value after `-o` is where to put the distribution file.
+`com.streamdeck-python-plugin.sdPlugin` is the *plugin folder*, and the value after `-o` is where the distribution file will be put.
 
-In the above case , you should find a `com.streamdeck-python-plugin.streamDeckPlugin` file in `com.streamdeck-python-plugin.sdPlugin/release`.
+In the above case , you should find a `com.streamdeck-python-plugin.streamDeckPlugin` file in the `release` folder.
 
-Double clicking `com.streamdeck-python-plugin.streamDeckPlugin` will install your plugin.
+Double clicking `com.streamdeck-python-plugin.streamDeckPlugin` will install your plugin in the Stream Deck App.
 
 
 ### Development
