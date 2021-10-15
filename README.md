@@ -65,6 +65,11 @@ def process_data(self, data):
 
 Based on the `data` from the app, different actions can be programmed.
 
+Reference for data structures that can be received: https://developer.elgato.com/documentation/stream-deck/sdk/events-received/.
+
+Reference for data structures that can the sent: https://developer.elgato.com/documentation/stream-deck/sdk/events-sent/.
+
+
 ## 2. Create an executable from the python code.
 
 To create the executable `pyinstaller` will be used. Navigate to the `plugin` folder and run the following command to create the executable:
@@ -78,12 +83,14 @@ This will create a `dist` and `build` folder in the `plugin` folder.
 
 > Note: `pyinstaller` will find all imports and include them in the build. There are some external libraries where additional setup is needed, in which case some customization will be needed (https://pyinstaller.readthedocs.io/en/stable/operating-mode.html#analysis-finding-the-files-your-program-needs)
 
+
 ## 3. Set up `manifest.json` to point to the executable.
 
 If no modifications are made to the image filenames and the executable path doesn't change, the `manifest.json` can be left as is.
 
 Otherwise, use this documentation from Elgato as  reference:
 https://developer.elgato.com/documentation/stream-deck/sdk/manifest/
+
 
 ## 4. Package the plugin using the package distribution tool provided by Elgato.
 
