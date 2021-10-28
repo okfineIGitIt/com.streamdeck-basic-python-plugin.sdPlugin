@@ -22,7 +22,7 @@
   ],
   "SDKVersion": 2,
   "Author": "okfineIGitIt",
-  "CodePath": "plugin/dist/com.basic-python-plugin/com.basic-python-plugin.exe",
+  "CodePath": "plugin/dist/main/main.exe",
   "PropertyInspectorPath": "propertyInspector.html",
   "Description": "Simple on-off toggle",
   "Name": "on-off",
