@@ -39,7 +39,7 @@ Creating a Stream Deck python plugin consists of 4 steps.
 
 ## 1. Write the python code.
 
-`com.basic-python-plugin.py` is where the Elgato Stream Deck runs code from.
+`main.py` is where the Elgato Stream Deck runs code from.
 
 The `Plugin().process_data()` function is where actions can be performed based on updates from the Stream Deck app:
 ```python
@@ -52,15 +52,6 @@ def process_data(self, data):
     """
 
     logging.info(f"Processing data: {data}")
-    self.state = self.state + 1
-    logging.info(f"Testing state: {self.state}")
-    
-    try:
-        if "payload" in data:
-            if self.sd_context is None:
-                self.sd_context = data["context"]
-    except Exception as err:
-        logging.critical(err)
 ```
 
 Based on the `data` from the app, different actions can be programmed.
@@ -74,12 +65,12 @@ Reference for data structures that can the sent: https://developer.elgato.com/do
 
 To create the executable `pyinstaller` will be used. Navigate to the `plugin` folder and run the following command to create the executable:
 ```bash
-.../streamdeck_python_plugin/streamcom.streamdeck-python-plugin.sdPlugin/plugin> pyinstaller com.basic-python-plugin.py
+.../streamdeck_python_plugin/streamcom.streamdeck-python-plugin.sdPlugin/plugin> pyinstaller main.py
 ```
 
 This will create a `dist` and `build` folder in the `plugin` folder.
 
-**The path to the executable will be `plugin/dist/com.basic-python-plugin.exe`.**
+**The path to the executable will be `plugin/dist/main.exe`.**
 
 > Note: `pyinstaller` will find all imports and include them in the build. There are some external libraries where additional setup is needed, in which case some customization will be needed (https://pyinstaller.readthedocs.io/en/stable/operating-mode.html#analysis-finding-the-files-your-program-needs)
 
