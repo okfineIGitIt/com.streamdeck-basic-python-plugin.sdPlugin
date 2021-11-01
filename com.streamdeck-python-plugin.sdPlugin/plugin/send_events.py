@@ -6,6 +6,109 @@ Reference: https://developer.elgato.com/documentation/stream-deck/sdk/events-sen
 from utils import get_image_as_base64_string
 
 
+def create_set_settings_payload(context: str, payload):
+    """Create and return "setSettings" dictionary to send to the Plugin Manager.
+
+    Args:
+        context (str): An opaque value identifying the instance's action you want to modify.
+        payload (dict): Dictionary with info to add to settings.
+    Returns:
+        dict: Dictionary with payload to save data for an instance's context.
+    """
+    return {
+        "event": "setSettings",
+        "context": context,
+        "payload": payload
+    }
+
+
+def create_get_settings_payload(context: str):
+    """Create and return "getSettings" dictionary to send to the Plugin Manager.
+
+    Args:
+        context (str): An opaque value identifying the instance's action you want to modify.
+    Returns:
+        dict: Dictionary with payload to get save data for an instance's context.
+    """
+    return {
+        "event": "setSettings",
+        "context": context,
+    }
+
+
+def create_set_global_settings_payload(plugin_context: str, payload):
+    """Create and return "setGlobalSettings" dictionary to send to the Plugin Manager.
+
+    Args:
+        plugin_context (str): An opaque value identifying the plugin/Property Inspector.
+            Received during the plugin registration procedure.
+        payload (dict): Dictionary with info to add to global settings.
+
+    Returns:
+        dict: Dictionary with payload to save data for plugin context.
+    """
+    return {
+        "event": "setGlobalSettings",
+        "context": plugin_context,
+        "payload": payload
+    }
+
+
+def create_get_global_settings_payload(plugin_context: str):
+    """Create and return "getGlobalSettings" dictionary to send to the Plugin Manager.
+
+    Args:
+        plugin_context (str): An opaque value identifying the plugin/Property Inspector.
+            Received during the plugin registration procedure.
+
+    Returns:
+        dict: Dictionary with payload to get save data for plugin context.
+    """
+    return {
+        "event": "getGlobalSettings",
+        "context": plugin_context,
+    }
+
+
+def create_open_url_payload(url: str):
+    """Create and return "openUrl" dictionary to send to the Plugin Manager.
+
+    Args:
+        url (str): Url to open in browser.
+    Returns:
+        dict: Dictionary with payload to open url in browser.
+    """
+
+    return {
+        "event": "openUrl",
+        "payload": {
+            "url": url
+        }
+    }
+
+
+def create_log_message_payload(message: str):
+    """Create and return "logMessage" dictionary to send to the Plugin Manager.
+
+    As per Stream Deck documentation:
+    Logs are saved to disk per plugin in the folder `~/Library/Logs/StreamDeck/` on macOS and
+    `%appdata%\\Elgato\\StreamDeck\\logs\\` on Windows. Note that the log files are rotated each
+    time the Stream Deck application is relaunched.
+
+    Args:
+        message (str): Message to log in Stream Deck log files.
+
+    Returns:
+        dict: Dictionary with payload to get save message to Stream Deck log file.
+    """
+    return {
+        "event": "logMessage",
+        "payload": {
+            "message": message
+        }
+    }
+
+
 def create_set_image_payload(
     context: str, image_path: str = None, target: int = 0, state: int = None
 ):
