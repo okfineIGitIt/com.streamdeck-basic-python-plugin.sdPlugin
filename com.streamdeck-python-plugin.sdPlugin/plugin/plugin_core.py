@@ -1,3 +1,5 @@
+"""Base plugin to interact with Stream Deck App."""
+
 import asyncio
 import json
 import logging
@@ -9,15 +11,15 @@ import send_events as se
 LOCALHOST = "ws://localhost"
 
 
-class Plugin:
-    """Plugin object to register Stream Deck plugin and call actions."""
+class StreamDeckPluginBase:
+    """Base plugin to interact with Stream Deck App."""
 
     def __init__(
             self, port, pluginUUID, registerEvent, info, loop,
     ):
         """Plugin object initializer.
 
-        `port`, `pluginUUID`, `registerEvent`, and `info` come from the Stream Deck Registration
+        `port`, `pluginUUID`, `registerEvent`, and `info` come from the Stream Deck registration
         process.
 
         Args:
@@ -68,7 +70,6 @@ class Plugin:
 
     async def switch_to_profile(self, *args, **kwargs):
         """Switch to a Stream Deck profile."""
-        """Switch to """
         payload = se.create_switch_to_profile_payload(*args, **kwargs)
         await self.send_message(json.dumps(payload))
 
@@ -80,12 +81,11 @@ class Plugin:
         await self.send_message(json.dumps(payload))
 
     async def listen(self):
-        """listens to port provided by Stream Deck app and processes messages."""
-
+        """Listens to port provided by Stream Deck app and processes messages."""
         try:
             await self._init_websocket()
             await self._register_websocket()
-            await self.on_message()
+            await self.start_listeners()
         except Exception as err:
             logging.critical(err)
 
@@ -111,22 +111,21 @@ class Plugin:
 
             logging.info("Registering websocket...")
             await self.websocket.send(json.dumps(data))
-            return
         except Exception as err:
             logging.critical(err)
 
     async def on_streamdeck_message(self):
+        """Receive messages from Stream Deck and send data for processing."""
         try:
             while True:
                 message = await self.websocket.recv()
-                logging.debug("StreamDeck Message Received")
-                await self.process_data(json.loads(message))
+                await self.process_streamdeck_data(json.loads(message))
         except websockets.exceptions.ConnectionClosedOK:
             logging.info("Stream Deck connection closed.")
             self.loop.stop()
 
-    async def on_message(self):
-        """Waits for message from Stream Deck to send for processing."""
+    async def start_listeners(self):
+        """Start listeners for Stream Deck."""
         try:
             task = asyncio.create_task(self.on_streamdeck_message())
             await task
@@ -143,13 +142,15 @@ class Plugin:
             await self.websocket.send(event)
         except Exception as err:
             logging.critical(err)
-            await self.show_alert()
 
-    async def process_data(self, data):
-        """Process data and perform actions.
+    async def process_streamdeck_data(self, data):
+        """Process data from Stream Deck and perform actions.
 
         Args:
             data (dict): Data dictionary.
         """
 
         logging.info(f"Processing data: {data}")
+
+
+

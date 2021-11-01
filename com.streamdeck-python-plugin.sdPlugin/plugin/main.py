@@ -1,9 +1,11 @@
+"""Entry point for Stream Deck App to run plugin."""
+
 import asyncio
 import logging
 from logging.handlers import RotatingFileHandler
 import sys
 
-from plugin_core import Plugin
+from plugin_core import StreamDeckPluginBase
 import utils
 
 
@@ -16,13 +18,14 @@ logging.basicConfig(
 
 
 def main():
+    """Run plugin event loop and safely exit upon error."""
     loop = None
 
     try:
         loop = asyncio.get_event_loop()
         args = utils.parse_args(sys.argv)
 
-        plugin = Plugin(
+        plugin = StreamDeckPluginBase(
             port=args['port'],
             pluginUUID=args['pluginUUID'],
             registerEvent=args['registerEvent'],
@@ -30,9 +33,7 @@ def main():
             loop=loop,
         )
 
-        loop.run_until_complete(
-            asyncio.gather(plugin.listen())
-        )
+        loop.run_until_complete(asyncio.gather(plugin.listen()))
 
         loop.run_forever()
         loop.stop()

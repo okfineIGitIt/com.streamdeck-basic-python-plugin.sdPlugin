@@ -1,3 +1,8 @@
+"""Stream Deck App `Send Event` payload creators.
+
+Reference: https://developer.elgato.com/documentation/stream-deck/sdk/events-sent/
+"""
+
 from utils import get_image_as_base64_string
 
 
@@ -47,6 +52,9 @@ def create_set_title_payload(
         context (str): An opaque value identifying the instance's action you want to modify.
         title (str): Title to display.
         target (int): Defines whether the image is set on the hardware, the software, or both.
+                Hardware and software - 0 (default)
+                Only on the hardware - 1
+                Only on the software - 2
         state (int): A 0-based integer value representing the state of an action with multiple states. 
             This is an optional parameter. If not specified, the title is set to all states.
 
