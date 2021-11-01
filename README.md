@@ -41,11 +41,11 @@ Creating a Stream Deck python plugin consists of 4 steps.
 
 `main.py` is where the Elgato Stream Deck runs code from.
 
-The `Plugin().process_data()` function is where actions can be performed based on updates from the Stream Deck app:
+The `Plugin().process_streamdeck_data()` function in `plugin_core.py` is where actions can be performed based on updates from the Stream Deck app:
 ```python
 ...
-def process_data(self, data):
-    """Process data and perform actions.
+def process_streamdeck_data(self, data):
+    """Process data from Stream Deck and perform actions.
 
     Args:
         data (dict): Data dictionary.
