@@ -35,6 +35,22 @@ class StreamDeckPluginBase:
         self.info = info
         self.loop = loop
 
+        self.create_payload_functions = {
+            "setSettings": se.create_set_settings_payload,
+            "getSettings": se.create_get_settings_payload,
+            "setGlobalSettings": se.create_set_global_settings_payload,
+            "getGlobalSettings": se.create_get_global_settings_payload,
+            "openUrl": se.create_open_url_payload,
+            "logMessage": se.create_log_message_payload,
+            "setTitle": se.create_set_title_payload,
+            "setImage": se.create_set_image_payload,
+            "showAlert": se.create_show_alert_payload,
+            "showOk": se.create_show_ok_payload,
+            "setState": se.create_switch_to_profile_payload,
+            "switchToProfile": se.create_switch_to_profile_payload,
+            "sendToPropertyInspector": se.create_send_to_property_inspector_payload,
+        }
+
     def __del__(self):
         """Cleanup websocket connections and async loop when plugin is deleted."""
         try:
@@ -43,41 +59,18 @@ class StreamDeckPluginBase:
         except Exception as err:
             logging.critical(err)
 
-    async def set_title(self, *args, **kwargs):
-        """Set the button title in the Stream Deck App and/or Device."""
-        payload = se.create_set_title_payload(*args, **kwargs)
-        await self.send_message(json.dumps(payload))
+    async def send_event(self, event_name: str, *args, **kwargs):
+        """Sends standard 'send event' to Plugin Manager.
 
-    async def set_image(self, *args, **kwargs):
-        """Set the button image in the Stream Deck App and/or Device."""
-        payload = se.create_set_image_payload(*args, **kwargs)
-        await self.send_message(json.dumps(payload))
+        Args:
+            event_name (str): Name of event to send.
+            *args: Arguments to pass to payload creation function.
+            **kwargs: Keyword arguments to pass to payload creation function:
+        """
+        if event_name not in self.create_payload_functions.keys():
+            raise ValueError(f"No such send event: {event_name}")
 
-    async def show_alert(self, *args, **kwargs):
-        """Show an alert on the Stream Deck Device and Software."""
-        payload = se.create_show_alert_payload(*args, **kwargs)
-        await self.send_message(json.dumps(payload))
-
-    async def show_ok(self, *args, **kwargs):
-        """Show an 'ok' checkmark symbol in the Stream Deck App and/or Device."""
-        payload = se.create_show_ok_payload(*args, **kwargs)
-        await self.send_message(json.dumps(payload))
-
-    async def set_state(self, *args, **kwargs):
-        """Set the state of an action that supports multiple states."""
-        payload = se.create_set_state_payload(*args, **kwargs)
-        await self.send_message(json.dumps(payload))
-
-    async def switch_to_profile(self, *args, **kwargs):
-        """Switch to a Stream Deck profile."""
-        payload = se.create_switch_to_profile_payload(*args, **kwargs)
-        await self.send_message(json.dumps(payload))
-
-    async def send_to_property_inspector(self, *args, **kwargs):
-        """Send a payload to the property inspector"""
-        payload = se.create_send_to_property_inspector_payload(
-            *args, **kwargs
-        )
+        payload = self.create_payload_functions[event_name](*args, **kwargs)
         await self.send_message(json.dumps(payload))
 
     async def listen(self):
