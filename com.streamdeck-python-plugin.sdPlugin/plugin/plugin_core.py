@@ -78,7 +78,7 @@ class StreamDeckPluginBase:
         try:
             await self._init_websocket()
             await self._register_websocket()
-            await self.start_listeners()
+            await self._start_listeners()
         except Exception as err:
             logging.critical(err)
 
@@ -117,7 +117,7 @@ class StreamDeckPluginBase:
             logging.info("Stream Deck connection closed.")
             self.loop.stop()
 
-    async def start_listeners(self):
+    async def _start_listeners(self):
         """Start listeners for Stream Deck."""
         try:
             task = asyncio.create_task(self.on_streamdeck_message())
