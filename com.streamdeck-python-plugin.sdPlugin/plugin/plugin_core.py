@@ -34,7 +34,7 @@ class StreamDeckPluginBase:
         self.registerEvent = registerEvent
         self.info = info
         self.loop = loop
-
+        self._listener_functions = [self.on_streamdeck_message]
         self.create_payload_functions = {
             "setSettings": se.create_set_settings_payload,
             "getSettings": se.create_get_settings_payload,
@@ -120,8 +120,8 @@ class StreamDeckPluginBase:
     async def _start_listeners(self):
         """Start listeners for Stream Deck."""
         try:
-            task = asyncio.create_task(self.on_streamdeck_message())
-            await task
+            task_list = [asyncio.create_task(func()) for func in self._listener_functions]
+            asyncio.as_completed(task_list)
         except Exception as err:
             logging.critical(err)
 
