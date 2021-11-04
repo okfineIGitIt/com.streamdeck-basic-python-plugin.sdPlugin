@@ -59,29 +59,6 @@ class StreamDeckPluginBase:
         except Exception as err:
             logging.critical(err)
 
-    async def send_event(self, event_name: str, *args, **kwargs):
-        """Sends standard 'send event' to Plugin Manager.
-
-        Args:
-            event_name (str): Name of event to send.
-            *args: Arguments to pass to payload creation function.
-            **kwargs: Keyword arguments to pass to payload creation function:
-        """
-        if event_name not in self.create_payload_functions.keys():
-            raise ValueError(f"No such send event: {event_name}")
-
-        payload = self.create_payload_functions[event_name](*args, **kwargs)
-        await self.send_message(json.dumps(payload))
-
-    async def listen(self):
-        """Listens to port provided by Stream Deck app and processes messages."""
-        try:
-            await self._init_websocket()
-            await self._register_websocket()
-            await self._start_listeners()
-        except Exception as err:
-            logging.critical(err)
-
     async def _init_websocket(self):
         """Sets up connection to port provided by Stream Deck app."""
         uri = f"{LOCALHOST}:{self.port}"
@@ -107,6 +84,45 @@ class StreamDeckPluginBase:
         except Exception as err:
             logging.critical(err)
 
+    async def _start_listeners(self):
+        """Start listeners for Stream Deck."""
+        try:
+            task_list = [asyncio.create_task(func()) for func in self._listener_functions]
+            asyncio.as_completed(task_list)
+        except Exception as err:
+            logging.critical(err)
+
+    def add_listeners(self, listener_functions: list):
+        """Add async listeners to list of listeners to run.
+
+        Args:
+            listener_functions:
+        """
+
+
+    async def send_event(self, event_name: str, *args, **kwargs):
+        """Sends standard 'send event' to Plugin Manager.
+
+        Args:
+            event_name (str): Name of event to send.
+            *args: Arguments to pass to payload creation function.
+            **kwargs: Keyword arguments to pass to payload creation function:
+        """
+        if event_name not in self.create_payload_functions.keys():
+            raise ValueError(f"No such send event: {event_name}")
+
+        payload = self.create_payload_functions[event_name](*args, **kwargs)
+        await self.send_message(json.dumps(payload))
+
+    async def listen(self):
+        """Listens to port provided by Stream Deck app and processes messages."""
+        try:
+            await self._init_websocket()
+            await self._register_websocket()
+            await self._start_listeners()
+        except Exception as err:
+            logging.critical(err)
+
     async def on_streamdeck_message(self):
         """Receive messages from Stream Deck and send data for processing."""
         try:
@@ -116,14 +132,6 @@ class StreamDeckPluginBase:
         except websockets.exceptions.ConnectionClosedOK:
             logging.info("Stream Deck connection closed.")
             self.loop.stop()
-
-    async def _start_listeners(self):
-        """Start listeners for Stream Deck."""
-        try:
-            task_list = [asyncio.create_task(func()) for func in self._listener_functions]
-            asyncio.as_completed(task_list)
-        except Exception as err:
-            logging.critical(err)
 
     async def send_message(self, event):
         """Sends event object to Stream Deck.
