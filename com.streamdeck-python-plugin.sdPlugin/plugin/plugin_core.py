@@ -130,13 +130,13 @@ class StreamDeckPluginBase:
 
     async def on_streamdeck_message(self):
         """Receive messages from Stream Deck and send data for processing."""
-        try:
-            while True:
+        while True:
+            try:
                 message = await self.websocket.recv()
                 await self.process_streamdeck_data(json.loads(message))
-        except websockets.exceptions.ConnectionClosedOK:
-            logging.info("Stream Deck connection closed.")
-            self.loop.stop()
+            except websockets.exceptions.ConnectionClosedOK:
+                logging.info("Stream Deck connection closed.")
+                self.loop.stop()
 
     async def send_message(self, event):
         """Sends event object to Stream Deck.
@@ -145,7 +145,7 @@ class StreamDeckPluginBase:
             event (str): Serialized json event object.
         """
         try:
-            await self.websocket.send(event)
+            return await self.websocket.send(event)
         except Exception as err:
             logging.critical(err)
 
