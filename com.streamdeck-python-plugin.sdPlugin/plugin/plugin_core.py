@@ -98,7 +98,12 @@ class StreamDeckPluginBase:
         Args:
             listener_functions:
         """
+        invalid_listeners = [func for func in listener_functions if not callable(func)]
 
+        if len(invalid_listeners) > 0:
+            raise ValueError(f"Invalid listeners detected: {invalid_listeners}")
+
+        self._listener_functions.append(listener_functions)
 
     async def send_event(self, event_name: str, *args, **kwargs):
         """Sends standard 'send event' to Plugin Manager.
